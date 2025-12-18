@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponse> getAllUsers(@PathVariable Long id) {
+    public ResponseEntity<UserResponse> getAllUsers(@PathVariable String id) {
         return userService.findUserById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
@@ -34,11 +34,17 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateUser(@PathVariable Long id,@RequestBody UserRequest updatedUser) {
+    public ResponseEntity<String> updateUser(@PathVariable String id,@RequestBody UserRequest updatedUser) {
         boolean result = userService.updateUser(id,updatedUser);
         if(result) {
             return new ResponseEntity<>("User updated successfully!", HttpStatus.OK);
         }
         return new ResponseEntity<>("User not updated successfully!", HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping("/all")
+    public ResponseEntity<Void> deleteAllUsers() {
+        userService.deleteAllUsers();
+        return ResponseEntity.ok().build();
     }
 }

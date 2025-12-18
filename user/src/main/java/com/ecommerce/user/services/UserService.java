@@ -28,8 +28,8 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public Optional<UserResponse> findUserById(Long id) {
-        return userRepository.findById(id).map(this::mapToUserResponse);
+    public Optional<UserResponse> findUserById(String id) {
+        return userRepository.findById(String.valueOf(id)).map(this::mapToUserResponse);
     }
 
     public void addUser(UserRequest userRequest) {
@@ -37,6 +37,10 @@ public class UserService {
         User user = new User();
         updateUserFromRequest(user, userRequest);
         userRepository.save(user);
+    }
+
+    public void deleteAllUsers() {
+        userRepository.deleteAll();
     }
 
     public void updateUserFromRequest(User user, UserRequest userRequest) {
@@ -57,7 +61,7 @@ public class UserService {
         }
     }
 
-    public Boolean updateUser(Long id, UserRequest updatingUserRequest) {
+    public Boolean updateUser(String id, UserRequest updatingUserRequest) {
         return userRepository.findById(id)
                 .map(existingUser -> {
                     updateUserFromRequest(existingUser, updatingUserRequest);
