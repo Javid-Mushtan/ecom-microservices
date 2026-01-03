@@ -1,0 +1,12 @@
+2026-01-04 01:22:21 INFO  com.ecommerce.user.controllers.UserController - getAllUsers
+2026-01-04 01:22:21 INFO  com.ecommerce.user.controllers.UserController - getAllUsers
+2026-01-04 01:23:10 INFO  org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry - Unregistering application USER with eureka with status DOWN
+2026-01-04 01:23:10 INFO  com.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1767469990439, current=DOWN, previous=UP]
+2026-01-04 01:23:10 INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_USER/LAPTOP-9O25GGVL:user:8082: registering service...
+2026-01-04 01:23:10 INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-04 01:23:10 INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_USER/LAPTOP-9O25GGVL:user:8082 - registration status: 204
+2026-01-04 01:23:10 INFO  org.springframework.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-01-04 01:23:10 INFO  com.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2026-01-04 01:23:13 INFO  com.netflix.discovery.DiscoveryClient - Unregistering ...
+2026-01-04 01:23:13 INFO  com.netflix.discovery.DiscoveryClient - DiscoveryClient_USER/LAPTOP-9O25GGVL:user:8082 - deregister  status: 200
+2026-01-04 01:23:13 INFO  com.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient

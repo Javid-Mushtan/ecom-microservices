@@ -8,8 +8,6 @@ import com.ecommerce.user.models.User;
 import com.ecommerce.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,8 +17,6 @@ import java.util.stream.Collectors;
 public class UserService {
 
     public final UserRepository userRepository;
-    private List<User> userList = new ArrayList<>();
-    public Long nextId = 1L;
 
     public List<UserResponse> fetchAllUsers() {
         return userRepository.findAll().stream()

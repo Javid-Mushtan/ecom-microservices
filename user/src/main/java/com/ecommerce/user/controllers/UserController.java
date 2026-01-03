@@ -3,28 +3,43 @@ package com.ecommerce.user.controllers;
 import com.ecommerce.user.dto.UserRequest;
 import com.ecommerce.user.dto.UserResponse;
 import com.ecommerce.user.services.UserService;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/users")
+@Slf4j
 public class UserController {
 
     private final UserService userService;
+    //private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @GetMapping
     public ResponseEntity<List<UserResponse>> getAllUsers() {
+        log.info("getAllUsers");
         return ResponseEntity.ok(userService.fetchAllUsers());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getAllUsers(@PathVariable String id) {
-        return userService.findUserById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        log.trace("Request received for User trace: {}{}", id);
+        log.info("Request received for User info: {}{}", id);
+        log.debug("Request received for User debug: {}{}", id);
+        log.warn("Request received for User warn: {}{}", id);
+        log.error("Request received for User error: {}{}", id);
+        return userService.findUserById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() ->
+                        ResponseEntity.notFound().build());
     }
 
     @PostMapping
